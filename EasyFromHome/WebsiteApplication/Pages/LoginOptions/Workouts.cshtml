@@ -1,0 +1,22 @@
+﻿@page
+@model WebsiteApplication.Pages.LoginOptions.WorkoutsModel
+@{
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<form method="post">
+		@foreach (var workout in Model.Workouts)
+		{
+			<div class="border">
+				<p>@Html.DisplayFor(type=>workout.Title)</p>
+				<p>@Html.DisplayFor(type=>workout.Description)</p>
+				<br>
+			</div>
+		}
+	</form>
+}

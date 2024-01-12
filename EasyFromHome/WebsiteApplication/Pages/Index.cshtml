@@ -1,0 +1,69 @@
+﻿@page
+@model IndexModel
+@{
+	ViewData["Title"] = "Easy From Home";
+}
+<section id="home">
+	<h1>Easy From Home</h1>
+	@if (Model.IfLoggedIn(HttpContext))
+	{
+		<a href="/SignUp"><button>SignUp</button></a>
+	}
+</section>
+<section id="about_us">
+	<div class="big-image"></div>
+	<div class="big-text">
+		<h1>ABOUT US</h1>
+		<p>
+			“We first started Easy From Home to
+			makeit easier and cheaper for people to sport. That is why we
+			launched a free website. This way people don't have to pay for
+			gyms if they want to exercise but they can easily do it from home
+			using the information on this website.
+
+			During our journey, we heard many complements from our
+			customers and they liked our idea. All of them didn't have
+			time to go the whole way to the gym because of the weather,
+			work, study, etc. Some of them did not have enough money to pay
+			for gyms each month. This way, we achieved many customers and
+			we are very happy to reach our goal.”
+		</p>
+	</div>
+</section>
+<section id="FAQ">
+	<h1>FAQ</h1>
+	<form method="post" class="faqs">
+		@foreach (var faq in Model.FAQs)
+		{
+			<label>Question:</label>
+			<p asp-route-id="@faq">@Html.DisplayFor(type=>faq.Question)</p>
+			<br>
+			<label>Answer:</label>
+			<p asp-route-id="@faq">@Html.DisplayFor(type=>faq.Answer)</p>
+			<br>
+		}
+	</form>
+</section>
+<section id="contact">
+	<div class="left">
+		<h1>Contact</h1>
+		<form method="post">
+			@if (!Model.IfLoggedIn(HttpContext))
+			{
+				<input readonly value="@Html.DisplayFor(type=>Model.account.Username)" />
+				<input readonly value="@Html.DisplayFor(type=>Model.account.EmailAddress)" />
+				<input type="text" placeholder="Question" asp-for="contactForm.Question" />
+				<button type="submit">Submit</button>
+			}
+			else
+			{
+				<input type="text" placeholder="Name" asp-for="contactForm.Name" />
+				<input type="text" placeholder="Email Address" asp-for="contactForm.Email" />
+				<input type="text" placeholder="Question" asp-for="contactForm.Question" />
+				<button type="submit">Submit</button>
+			}
+		</form>
+	</div>
+</section>
+
+

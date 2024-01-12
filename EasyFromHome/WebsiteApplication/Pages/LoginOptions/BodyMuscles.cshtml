@@ -1,0 +1,19 @@
+﻿@page
+@model WebsiteApplication.Pages.LoginOptions.BodyMusclesModel
+@{
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+
+	<form method="post">
+		@foreach (var bodymuscle in Model.bodyMuscles)
+		{
+			<button type="submit" name="bodymuscle" value="@bodymuscle" asp-route-id="bodymuscle" asp-route-AccountId="@Model.AccountID">@Html.DisplayFor(type=>bodymuscle)</button>
+		}
+	</form>
+}

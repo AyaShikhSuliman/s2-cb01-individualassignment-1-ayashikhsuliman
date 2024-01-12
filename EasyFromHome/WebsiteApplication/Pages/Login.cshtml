@@ -1,0 +1,26 @@
+﻿@page
+@model WebsiteApplication.Pages.LoginModel
+@{
+	ViewData["Title"] = "Login";
+}
+<link rel="stylesheet" href="~/css/pages.css" />
+
+<div id="login-box">
+	<div class="left">
+		<h1>LogIn</h1>
+		<form method="post">
+			<input type="text" placeholder="Username" asp-for="account.Username" />
+			<span asp-validation-for="account.Username"></span>
+
+			<input type="password" placeholder="Password" asp-for="account.Password" />
+			<span asp-validation-for="account.Password"></span>
+
+			<button class="LogIn" type="submit">LogIn</button>
+		</form>
+	</div>
+
+	<div class="right">
+		@*add a picture
+		*@
+	</div>
+</div>
